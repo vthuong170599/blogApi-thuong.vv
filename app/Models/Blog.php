@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\DB;
 class Blog extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','des','detail','public','data_pubblic','thumb','category','position'];
+    protected $fillable = ['title', 'des', 'detail', 'public', 'data_pubblic', 'thumb', 'category', 'position'];
 
     protected $casts = [
         'position' => 'array',
     ];
-    public function searchBlog($title){
-        // dd($title);
+    public function searchBlog($title)
+    {
         $data = Blog::where('title', 'like', "%{$title}%")->get();
         return $data;
     }

@@ -15,7 +15,7 @@ class BlogController extends Controller
     public function index()
     {
         //
-        return Blog::all();
+        return Blog::paginate(5);
     }
 
     /**
@@ -76,9 +76,9 @@ class BlogController extends Controller
      * @param  string  $title
      * @return \Illuminate\Http\Response
      */
-    public function search($title, Blog $blog)
+    public function search(Request $request,Blog $blog)
     {
-        $blog = $blog->searchBlog($title);
+        $blog = $blog->searchBlog($request->title);
         return response()->json($blog, 200);
     }
 }
